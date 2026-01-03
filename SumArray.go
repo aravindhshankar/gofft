@@ -12,12 +12,12 @@ func sum(ch chan int, arr []int) {
 	ch <- total
 }
 
-func main() {
+func main2() {
 	var total int
 	c := make(chan int, 2)
 	N := 10
 	list := make([]int, N)
-	for i := 0; i < N; i++ {
+	for i := range N {
 		list[i] = i + 1 // Numbers from 1 to N
 	}
 
