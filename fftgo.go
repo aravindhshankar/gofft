@@ -23,6 +23,10 @@ func fftnaive(a []complex128, size int) []complex128 {
 }
 
 func main() {
+	testApply()
+}
+
+func testFftnaive() {
 	N := 8
 	list := make([]complex128, N)
 	for i := range N {
@@ -30,4 +34,14 @@ func main() {
 	}
 	fftlist := fftnaive(list, N)
 	fmt.Println(fftlist)
+}
+
+func testApply() {
+	N := 8
+	list := make([]float64, N)
+	for i := range N {
+		list[i] = float64(i + 1)
+	}
+	applysin := Apply(math.Sin, list)
+	fmt.Println(applysin)
 }
