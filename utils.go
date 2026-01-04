@@ -1,9 +1,29 @@
 package main
 
+import (
+	"math/cmplx"
+)
+
 func Apply[T any](f func(T) T, list []T) []T {
 	retval := make([]T, len(list))
 	for i, v := range list {
 		retval[i] = f(v)
 	}
 	return retval
+}
+
+func CompareEqualArrays(A, B []complex128, eps ...float64) bool {
+	if len(A) != len(B) {
+		return false
+	}
+	epsval := 1e-5
+	if len(eps) > 0 {
+		epsval = eps[0]
+	}
+	for i := range A {
+		if cmplx.Abs(A[i]-B[i]) > epsval {
+			return false
+		}
+	}
+	return true
 }
