@@ -58,3 +58,21 @@ func NdftNfft() {
 	ok := CompareEqualArrays(dftlist, fftlist)
 	fmt.Println(ok)
 }
+
+func NfftNgofft() {
+	N := 8
+	list := make([]complex128, N)
+	for i := range N {
+		list[i] = complex(math.Pi*float64(i)/float64(N), 0)
+	}
+	list = Apply(cmplx.Sin, list)
+
+	fftlist := FFTnaive(list)
+	fmt.Println("fftlist = ", fftlist)
+
+	gofftlist := FFTgo(list)
+	fmt.Println("goftlist = ", gofftlist)
+
+	ok := CompareEqualArrays(fftlist, gofftlist)
+	fmt.Println(ok)
+}
