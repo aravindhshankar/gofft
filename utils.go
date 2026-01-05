@@ -1,6 +1,7 @@
 package main
 
 import (
+	"math"
 	"math/cmplx"
 )
 
@@ -26,4 +27,16 @@ func CompareEqualArrays(A, B []complex128, eps ...float64) bool {
 		}
 	}
 	return true
+}
+
+func Chop(x float64, thresh ...float64) float64 {
+	threshval := 1e-15
+	if len(thresh) > 0 {
+		threshval = thresh[0]
+	}
+
+	if math.Abs(x-0.0) < threshval {
+		x = 0.0
+	}
+	return x
 }

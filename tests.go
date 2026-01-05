@@ -26,6 +26,22 @@ func testApply() {
 	fmt.Println(applysin)
 }
 
+func chopset(a float64) float64 {
+	return Chop(a)
+}
+
+func testChop() {
+	x := 1.5
+	y := 2.1e-16
+	z := []float64{2.3, 6, 1.1e-8, 2.1e-16}
+	x = Chop(x)
+	y = Chop(y)
+	z = Apply(chopset, z)
+	fmt.Println("Chopped x = ", x)
+	fmt.Println("Chopped y = ", y)
+	fmt.Println("Chopped z = ", z)
+}
+
 func NdftNfft() {
 	N := 8
 	list := make([]complex128, N)

@@ -48,5 +48,6 @@ func FFTnaive(a []complex128) []complex128 {
 }
 
 func main() {
-	NdftNfft()
+	// NdftNfft()
+	testChop()
 }
