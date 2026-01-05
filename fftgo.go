@@ -87,9 +87,3 @@ func FFTgo(a []complex128) []complex128 {
 	A := <-ch
 	return A
 }
-
-func main() {
-	// NdftNfft()
-	// testChop()
-	NfftNgofft()
-}
