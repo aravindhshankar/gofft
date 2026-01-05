@@ -1,8 +1,10 @@
 package main
 
 import (
+	"fmt"
 	"math"
 	"math/cmplx"
+	"time"
 )
 
 func Apply[T any](f func(T) T, list []T) []T {
@@ -39,4 +41,11 @@ func Chop(x float64, thresh ...float64) float64 {
 		x = 0.0
 	}
 	return x
+}
+
+func Timer(name string) func() {
+	start := time.Now()
+	return func() {
+		fmt.Printf("%s took %v\n", name, time.Since(start))
+	}
 }

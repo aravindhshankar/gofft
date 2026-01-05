@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"math"
 	"math/cmplx"
+	"time"
 )
 
 func testDFTnaive() {
@@ -60,18 +61,24 @@ func NdftNfft() {
 }
 
 func NfftNgofft() {
-	N := 8
+	N := int(math.Pow(2, 10))
 	list := make([]complex128, N)
 	for i := range N {
 		list[i] = complex(math.Pi*float64(i)/float64(N), 0)
 	}
 	list = Apply(cmplx.Sin, list)
 
+	start := time.Now()
 	fftlist := FFTnaive(list)
-	fmt.Println("fftlist = ", fftlist)
+	elapsed := time.Since(start)
+	fmt.Println("Time elapsed for fftnaive = ", elapsed)
+	// fmt.Println("fftlist = ", fftlist)
 
+	start = time.Now()
 	gofftlist := FFTgo(list)
-	fmt.Println("goftlist = ", gofftlist)
+	elapsed = time.Since(start)
+	fmt.Println("Time elapsed for fftgo= ", elapsed)
+	// fmt.Println("goftlist = ", gofftlist)
 
 	ok := CompareEqualArrays(fftlist, gofftlist)
 	fmt.Println(ok)

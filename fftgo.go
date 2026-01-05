@@ -17,6 +17,7 @@ func DFTnaive(a []complex128, size int) []complex128 {
 }
 
 func FFTnaive(a []complex128) []complex128 {
+	// defer Timer("FFTnaive")() //dumb, because this function is recursive
 	n := len(a)
 	if n == 1 {
 		return a
@@ -80,6 +81,7 @@ func fftgo(a []complex128, ch chan []complex128) { // will lead to race conditio
 }
 
 func FFTgo(a []complex128) []complex128 {
+	// defer Timer("FFTgo")()
 	ch := make(chan []complex128)
 	go fftgo(a, ch)
 	A := <-ch
