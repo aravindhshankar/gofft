@@ -62,7 +62,7 @@ func NdftNfft() {
 }
 
 func NfftNgofft() {
-	N := int(math.Pow(2, 8))
+	N := int(math.Pow(2, 19))
 	list := make([]complex128, N)
 	for i := range N {
 		list[i] = complex(math.Pi*float64(i)/float64(N), 0)
